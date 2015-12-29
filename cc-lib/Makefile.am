@@ -1,5 +1,3 @@
-SUBDIRS = base
-
 AM_CXXFLAGS = -pthread
 AM_LDFLAGS  = -pthread
 
