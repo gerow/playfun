@@ -1,5 +1,5 @@
-AM_CXXFLAGS = -pthread -Icity
-AM_LDFLAGS  = -pthread
+AM_CXXFLAGS = -pthread -Icity $(SDL_CFLAGS)
+AM_LDFLAGS  = -pthread $(SDL_LDFLAGS)
 
 check_PROGRAMS = heap_test rle_test interval_tree_test threadutil_test
 noinst_LTLIBRARIES = libcclib.la

@@ -6,6 +6,7 @@ AM_PROG_AR
 LT_INIT
 # We require C++11
 AX_CXX_COMPILE_STDCXX_11(,[mandatory])
+PKG_CHECK_MODULES([SDL], [sdl])
 
 AC_CONFIG_FILES([Makefile
 		 cc-lib/Makefile])
