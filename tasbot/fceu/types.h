@@ -75,9 +75,11 @@ typedef uint32_t uint32;
 #endif
 
 #ifdef __GNUC__
- typedef unsigned long long uint64;
+ // XXX(gerow): I really don't know why.
+ typedef uint64_t uint64;
  typedef uint64 u64;
- typedef long long int64;
+ // XXX(gerow): Not sure here either.
+ typedef int64_t int64;
  #define INLINE inline
  #define GINLINE inline
 #elif MSVC

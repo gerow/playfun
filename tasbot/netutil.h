@@ -9,7 +9,13 @@
 
 #include "SDL_net.h"
 // for getlasterror, etc.
-#include "SDL_net/SDLnetsys.h"
+//#include "SDL_net/SDLnetsys.h"
+// XXX(gerow): I guess we need to define this ourselves...
+// but that's for another day.
+inline int SDLNet_GetLastError(void) {
+  return 1;
+}
+
 #include "marionet.pb.h"
 #include "util.h"
 #include "errno.h"
