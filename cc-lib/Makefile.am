@@ -119,7 +119,14 @@ libcclib_la_SOURCES = arcfour.cc arcfour.h \
 		      jdksmidi/sequencer.h \
 		      jdksmidi/tick.h \
 		      jdksmidi/utils.h \
-		      jdksmidi/smpte.h
+		      jdksmidi/smpte.h \
+		      sdl/chars.h \
+		      sdl/font.cc \
+		      sdl/font.h \
+		      sdl/sdlutil.cc \
+		      sdl/sdlutil.h \
+		      strings/stringprintf.cc \
+		      strings/stringprintf.h
 
 heap_test_SOURCES = heap_test.cc
 heap_test_LDADD = libcclib.la
