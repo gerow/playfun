@@ -1,5 +1,8 @@
 SUBDIRS = base
 
+AM_CXXFLAGS = -pthread
+AM_LDFLAGS  = -pthread
+
 check_PROGRAMS = heap_test rle_test interval_tree_test threadutil_test
 noinst_LTLIBRARIES = libcclib.la
 
