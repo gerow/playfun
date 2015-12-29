@@ -1,1 +1,2 @@
-SUBDIRS = cc-lib tasbot
+ACLOCAL_AMFLAGS = -I m4
+SUBDIRS = cc-lib
