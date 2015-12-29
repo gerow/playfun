@@ -7,7 +7,12 @@ LT_INIT
 # We require C++11
 AX_CXX_COMPILE_STDCXX_11(,[mandatory])
 PKG_CHECK_MODULES([SDL], [sdl])
+PKG_CHECK_MODULES([PROTOBUF], [protobuf])
+AC_CHECK_PROG([PROTOC], [protoc], [protoc])
+AS_IF([test "x${PROTOC}" == "x"],
+    [AC_MSG_ERROR([ProtoBuf compiler "protoc" not found.])])
 
 AC_CONFIG_FILES([Makefile
-		 cc-lib/Makefile])
+		 cc-lib/Makefile
+		 tasbot/Makefile])
 AC_OUTPUT
