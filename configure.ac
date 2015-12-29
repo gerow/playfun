@@ -8,6 +8,5 @@ LT_INIT
 AX_CXX_COMPILE_STDCXX_11(,[mandatory])
 
 AC_CONFIG_FILES([Makefile
-		 cc-lib/Makefile
-		 cc-lib/base/Makefile])
+		 cc-lib/Makefile])
 AC_OUTPUT
