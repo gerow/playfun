@@ -24,8 +24,6 @@ libcclib_la_SOURCES = arcfour.cc arcfour.h \
 		      timer.h \
 		      util.h util.cc \
 		      wavesave.h wavesave.cc \
-		      basictypes.h \
-		      casts.h \
 		      base/basictypes.h \
 		      base/casts.h \
 		      base/commandlineflags.h \

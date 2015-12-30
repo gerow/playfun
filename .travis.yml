@@ -2,7 +2,7 @@ language: cpp
 compiler: gcc
 sudo: required
 dist: trusty
-script: ./autogen.sh && ./configure && make && make check
+script: ./autogen.sh && ./configure && make && make check && make dist && tar xzvf playfun-*.tar.gz && cd playfun-* && ./configure && make && make check
 addons:
   apt:
     packages:
