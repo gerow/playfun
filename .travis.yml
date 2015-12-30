@@ -1,7 +1,8 @@
 language: cpp
 compiler: g++-4.8
+sudo: required
+dist: trusty
 script: ./autogen.sh && ./configure && make && make check
-sudo: false
 addons:
   apt:
     packages:
