@@ -1,5 +1,5 @@
 language: cpp
-dist: trusty
+compiler: g++-4.8
 script: ./autogen.sh && ./configure && make && make check
 sudo: false
 addons:
@@ -12,7 +12,5 @@ addons:
       - libprotobuf-dev
       - protobuf-compiler
       - g++-4.8
-install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 cache:
   - apt
