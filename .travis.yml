@@ -1,0 +1,14 @@
+language: cpp
+script: ./autogen.sh && ./configure && make && make check
+sudo: false
+addons:
+  apt:
+    packages:
+      - libsdl-dev
+      - libsdl-net1.2-dev
+      - libz-dev
+      - libpng-dev
+      - libprotobuf-dev
+      - protobuf-compiler
+cache:
+  - apt
