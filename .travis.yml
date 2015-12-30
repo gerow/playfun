@@ -1,7 +1,5 @@
 language: cpp
-compiler:
-  - gcc
-  - clang
+compiler: gcc
 sudo: required
 dist: trusty
 script: ./autogen.sh && ./configure && make && make check
