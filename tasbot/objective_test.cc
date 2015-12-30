@@ -96,7 +96,9 @@ static void FindCounterExample() {
 	  memories.push_back(mem);
 	}
 	Objective obj(memories);
-	obj.EnumerateFullAll(ignore, 1, 0);
+	// XXX(gerow): C++11 defines std::ignore, but we're not using std...
+	// so why does the compiler claim this is ambigous without the '::'?
+	obj.EnumerateFullAll(::ignore, 1, 0);
       }
     }
   }

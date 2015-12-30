@@ -1,11 +1,12 @@
 AM_CXXFLAGS = -pthread $(PROTOBUF_CFLAGS) $(SDL_CFLAGS) $(SDL_NET_CFLAGS) \
               $(ZLIB_CFLAGS) $(LIBPNG_CFLAGS) \
               -DMARIONET=1 -I../cc-lib -I../cc-lib/city -DPSS_STYLE=1 \
-              -DDUMMY_UI -DNOWINSTUFF -DHAVE_ASPRINTF -DHAVE_ALLOCA
+              -DDUMMY_UI -DNOWINSTUFF -DHAVE_ASPRINTF -DHAVE_ALLOCA -Ifceu
 AM_LDFLAGS = -pthread $(PROTOBUF_LIBS) $(SDL_LIBS) $(SDL_NET_LIBS) \
              $(ZLIB_LIBS) $(LIBPNG_LIBS)
 
 bin_PROGRAMS = learnfun playfun scopefun pinviz
+check_PROGRAMS = emu_test objective_test weighted_objectives_test
 
 # Weird protobuf junk
 %.pb.cc %.pb.h: %.proto
@@ -62,10 +63,18 @@ pinviz_SOURCES = $(COMMON_SOURCES) $(PNGSAVESOURCES) pinviz.cc wave.cc
 nodist_pinviz_SOURCES = $(MARIONETSOURCES)
 pinviz_LDADD = ../cc-lib/libcclib.la
 
-#emu_test_SOURCES = $(COMMON_SOURCES) emu_test.cc
-#nodist_emu_test_SOURCES = $(MARIONETSOURCES)
-#emu_test_LDADD = ../cc-lib/libcclib.la
+# Tests
+emu_test_SOURCES = $(COMMON_SOURCES) emu_test.cc config.h
+nodist_emu_test_SOURCES = $(MARIONETSOURCES)
+emu_test_LDADD = ../cc-lib/libcclib.la
 
-#objective_test_SOURCES = $(COMMON_SOURCES) objective.cc objective_test.cc
-#nodist_objective_test_SOURCES = $(MARIONETSOURCES)
-#objective_test_LDADD = ../cc-lib/libcclib.la
+objective_test_SOURCES = $(COMMON_SOURCES) objective_test.cc
+nodist_objective_test_SOURCES = $(MARIONETSOURCES)
+objective_test_LDADD = ../cc-lib/libcclib.la
+
+weighted_objectives_test_SOURCES = $(COMMON_SOURCES) weighted-objectives_test.cc
+nodist_weighted_objectives_test_SOURCES = $(MARIONETSOURCES)
+weighted_objectives_test_LDADD = ../cc-lib/libcclib.la
+
+XFAIL_TESTS = emu_test
+TESTS = $(check_PROGRAMS)
