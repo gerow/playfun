@@ -1,5 +1,7 @@
 language: cpp
-compiler: g++-4.8
+compiler:
+  - gcc
+  - clang
 sudo: required
 dist: trusty
 script: ./autogen.sh && ./configure && make && make check
@@ -12,6 +14,5 @@ addons:
       - libpng-dev
       - libprotobuf-dev
       - protobuf-compiler
-      - g++-4.8
 cache:
   - apt
