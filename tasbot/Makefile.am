@@ -1,18 +1,18 @@
 AM_CXXFLAGS = -pthread $(PROTOBUF_CFLAGS) $(SDL_CFLAGS) $(SDL_NET_CFLAGS) \
-              $(ZLIB_CFLAGS) \
+              $(ZLIB_CFLAGS) $(LIBPNG_CFLAGS) \
               -DMARIONET=1 -I../cc-lib -I../cc-lib/city -DPSS_STYLE=1 \
               -DDUMMY_UI -DNOWINSTUFF -DHAVE_ASPRINTF -DHAVE_ALLOCA
 AM_LDFLAGS = -pthread $(PROTOBUF_LIBS) $(SDL_LIBS) $(SDL_NET_LIBS) \
-             $(ZLIB_LIBS)
+             $(ZLIB_LIBS) $(LIBPNG_LIBS)
 
-bin_PROGRAMS = playfun
+bin_PROGRAMS = learnfun playfun scopefun pinviz
 
 # Weird protobuf junk
 %.pb.cc %.pb.h: %.proto
 	$(PROTOC) --proto_path=. --cpp_out=. $^
 dist_noinst_DATA = marionet.proto
-nodist_playfun_SOURCES = marionet.pb.cc marionet.pb.h
-MOSTLYCLEANFILES = marionet.pb.cc marionet.pb.h
+MARIONETSOURCES = marionet.pb.cc marionet.pb.h
+MOSTLYCLEANFILES = $(MARIONETSOURCES)
 BUILT_SOURCES = marionet.pb.h
 
 # Everything's mostly normal again... well, except for these lines of objects
@@ -41,8 +41,31 @@ TASBOTSOURCES=headless-driver.cc simplefm2.cc emulator.cc basis-util.cc objectiv
 
 NETWORKINGSOURCES = netutil.cc
 
+PNGSAVESOURCES = pngsave.cc pngsave.h
+
 COMMON_SOURCES = $(EMUSOURCES) $(TASBOTSOURCES) $(NETWORKINGSOURCES)
 
 # The actual sources
+learnfun_SOURCES = $(COMMON_SOURCES) learnfun.cc
+nodist_learnfun_SOURCES = $(MARIONETSOURCES)
+learnfun_LDADD = ../cc-lib/libcclib.la
+
 playfun_SOURCES = $(COMMON_SOURCES) playfun.cc
+nodist_playfun_SOURCES = $(MARIONETSOURCES)
 playfun_LDADD = ../cc-lib/libcclib.la
+
+scopefun_SOURCES = $(COMMON_SOURCES) $(PNGSAVESOURCES) scopefun.cc wave.cc
+nodist_scopefun_SOURCES = $(MARIONETSOURCES)
+scopefun_LDADD = ../cc-lib/libcclib.la
+
+pinviz_SOURCES = $(COMMON_SOURCES) $(PNGSAVESOURCES) pinviz.cc wave.cc
+nodist_pinviz_SOURCES = $(MARIONETSOURCES)
+pinviz_LDADD = ../cc-lib/libcclib.la
+
+#emu_test_SOURCES = $(COMMON_SOURCES) emu_test.cc
+#nodist_emu_test_SOURCES = $(MARIONETSOURCES)
+#emu_test_LDADD = ../cc-lib/libcclib.la
+
+#objective_test_SOURCES = $(COMMON_SOURCES) objective.cc objective_test.cc
+#nodist_objective_test_SOURCES = $(MARIONETSOURCES)
+#objective_test_LDADD = ../cc-lib/libcclib.la
