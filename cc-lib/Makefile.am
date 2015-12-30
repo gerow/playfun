@@ -1,5 +1,9 @@
-AM_CXXFLAGS = -pthread -Icity $(SDL_CFLAGS)
-AM_LDFLAGS  = -pthread $(SDL_LIBS)
+AM_CXXFLAGS = -Icity $(SDL_CFLAGS) -pthread
+# XXX(gerow): wat
+AM_CXXFLAGS += -Wl,--no-as-needed
+AM_LDFLAGS  = $(SDL_LIBS) -pthread -lpthread
+# XXX(gerow): wat
+AM_LDFLAGS  += -Wl,--no-as-needed
 
 check_PROGRAMS = heap_test rle_test interval_tree_test threadutil_test
 noinst_LTLIBRARIES = libcclib.la
