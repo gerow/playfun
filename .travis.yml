@@ -6,9 +6,9 @@ install:
 addons:
   apt:
     packages:
-      - libsdl-dev
+      - libsdl1.2-dev
       - libsdl-net1.2-dev
-      - libz-dev
+      - zlib1g-dev
       - libpng-dev
       - libprotobuf-dev
       - protobuf-compiler
