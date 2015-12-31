@@ -1,7 +1,8 @@
 AM_CXXFLAGS = -pthread $(PROTOBUF_CFLAGS) $(SDL_CFLAGS) $(SDL_NET_CFLAGS) \
               $(ZLIB_CFLAGS) $(LIBPNG_CFLAGS) \
               -DMARIONET=1 -I../cc-lib -I../cc-lib/city -DPSS_STYLE=1 \
-              -DDUMMY_UI -DNOWINSTUFF -DHAVE_ASPRINTF -DHAVE_ALLOCA -Ifceu
+              -DDUMMY_UI -DNOWINSTUFF -DHAVE_ASPRINTF -DHAVE_ALLOCA -Ifceu \
+	      -DAM_DATADIR=\"$(pkgdatadir)\"
 AM_LDFLAGS = -pthread $(PROTOBUF_LIBS) $(SDL_LIBS) $(SDL_NET_LIBS) \
              $(ZLIB_LIBS) $(LIBPNG_LIBS)
 
@@ -353,6 +354,8 @@ playfun_LDADD = ../cc-lib/libcclib.la
 scopefun_SOURCES = $(COMMON_SOURCES) $(PNGSAVESOURCES) scopefun.cc wave.cc
 nodist_scopefun_SOURCES = $(MARIONETSOURCES)
 scopefun_LDADD = ../cc-lib/libcclib.la
+scopefundir = $(datadir)/playfun
+scopefun_DATA = controller.png controllerdown.png
 
 pinviz_SOURCES = $(COMMON_SOURCES) $(PNGSAVESOURCES) pinviz.cc wave.cc
 nodist_pinviz_SOURCES = $(MARIONETSOURCES)

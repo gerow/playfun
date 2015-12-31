@@ -63,8 +63,10 @@ struct ScopeFun {
   ScopeFun(const string &game,
 	   const string &moviename,
 	   int sf, int mf, bool so, bool fo) : 
-    controller("controller.png"),
-    controllerdown("controllerdown.png"),
+    // NOTE(gerow): Changed to allow us to install and access these from
+    // /usr/share/playfun/*
+    controller(AM_DATADIR "/playfun/controller.png"),
+    controllerdown(AM_DATADIR "/playfun/controllerdown.png"),
     game(game),
     soundonly(so),
     fatobjectivelines(fo) {
