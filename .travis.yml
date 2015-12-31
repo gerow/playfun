@@ -1,5 +1,7 @@
 language: cpp
-compiler: gcc
+compiler:
+  - gcc
+  - clang
 sudo: required
 dist: trusty
 script: ./autogen.sh && ./configure && make && make check && make dist && tar xzvf playfun-*.tar.gz && cd playfun-* && ./configure && make && make check

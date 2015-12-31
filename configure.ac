@@ -4,7 +4,7 @@
 #
 # This number is bumped before the version is released, so to find the actual
 # revision that creates that relase just look for the v$(version) tag.
-AC_INIT([playfun], [0.2675.0], [https://github.com/gerow/playfun])
+AC_INIT([playfun], [0.2675.1], [https://github.com/gerow/playfun])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 AC_PROG_CXX
