@@ -8,11 +8,12 @@ AM_LDFLAGS = -pthread $(PROTOBUF_LIBS) $(SDL_LIBS) $(SDL_NET_LIBS) \
 
 bin_PROGRAMS = learnfun playfun scopefun pinviz
 check_PROGRAMS = emu_test objective_test weighted_objectives_test
+dist_noinst_DATA = controller.png controllerdown.png
 
 # Weird protobuf junk
 %.pb.cc %.pb.h: %.proto
 	$(PROTOC) --proto_path=. --cpp_out=. $^
-dist_noinst_DATA = marionet.proto
+dist_noinst_DATA += marionet.proto
 MARIONETSOURCES = marionet.pb.cc marionet.pb.h
 MOSTLYCLEANFILES = $(MARIONETSOURCES)
 BUILT_SOURCES = marionet.pb.h
