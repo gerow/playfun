@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <cmath>
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -360,8 +361,8 @@ struct ScopeFun {
       }
     }
 
-    int green = floor((gtotal / total) * Score::SCOREH);
-    int red = floor((rtotal / total) * Score::SCOREH);
+    int green = std::floor((gtotal / total) * Score::SCOREH);
+    int red = std::floor((rtotal / total) * Score::SCOREH);
     int blue = Score::SCOREH - red - green;
     return Score(green, red, blue);
   }
@@ -472,7 +473,7 @@ struct ScopeFun {
 	  // Number of pixels between edge pixels.
 	  // Nominal width is NP + 1.
 	  static const int NP = 3;
-	  int start = floor(point);
+	  int start = std::floor(point);
 	  double leftover = point - start;
 	  CHECK(leftover >= 0.0);
 	  CHECK(leftover <= 1.0);
@@ -505,7 +506,7 @@ struct ScopeFun {
 
 	} else {
 	  double yoff = height * (1.0 - vfs[i]);
-	  WritePixelTo(x + col, y + floor(yoff), 
+	  WritePixelTo(x + col, y + std::floor(yoff), 
 		       r, g, b, surf, surfw, surfh);
 	}
       }

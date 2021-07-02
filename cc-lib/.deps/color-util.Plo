@@ -1,0 +1,3 @@
+color-util.lo: color-util.cc /usr/include/stdc-predef.h color-util.h
+/usr/include/stdc-predef.h:
+color-util.h:

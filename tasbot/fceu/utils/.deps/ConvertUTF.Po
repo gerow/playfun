@@ -1,0 +1,4 @@
+fceu/utils/ConvertUTF.o: fceu/utils/ConvertUTF.c \
+ /usr/include/stdc-predef.h fceu/utils/ConvertUTF.h
+/usr/include/stdc-predef.h:
+fceu/utils/ConvertUTF.h:
