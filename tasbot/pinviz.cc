@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <cmath>
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -389,7 +390,7 @@ struct PinViz {
 	} else {
 	  double ord = GetFrac(all_colors, RGBL(r, g, b));
 	  // color vector length
-	  double len = sqrt(r * r + g * g + b * b);
+	  double len = std::sqrt(r * r + g * g + b * b);
 	  // Normalize
 	  double norm_r = r / len;
 	  double norm_g = g / len;

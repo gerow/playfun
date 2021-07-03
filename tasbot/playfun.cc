@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <cmath>
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -617,7 +618,7 @@ struct PlayFun {
     if (*start < 0) *start = 0;
     if (*start >= inputs.size()) *start = inputs.size() - 1;
     int maxlen = inputs.size() - *start;
-    double d = pow(RandomDouble(rc), exponent);
+    double d = std::pow(RandomDouble(rc), exponent);
     *len = d * maxlen;
     if (*len < 0) *len = 0;
     if (*len >= maxlen) *len = maxlen;
